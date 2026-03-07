@@ -3,7 +3,9 @@ import { albums } from "../data/albums"
 
 export default function Home() {
 
-    console.log(albums);
+    console.log({
+        albums: albums ?? null
+    });
 
     return (
             <div className="container mx-auto px-6">

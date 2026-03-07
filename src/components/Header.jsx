@@ -6,7 +6,7 @@ export default function Header() {
 
             <Link to="/">
                 <img
-                    src="/logo.png"
+                    src="./logo.png"
                     alt="Levy Dave"
                     className="h-10 w-auto object-contain"
                 />

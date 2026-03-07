@@ -2,6 +2,9 @@ import AlbumCard from "../components/AlbumCard"
 import { albums } from "../data/albums"
 
 export default function Home() {
+
+    console.log(albums);
+
     return (
             <div className="container mx-auto px-6">
 

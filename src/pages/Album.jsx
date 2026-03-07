@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { albums } from "../data/albums.js"
+import { albums } from "../data/albums"
 import { motion } from "framer-motion"
 
 export default function Album() {

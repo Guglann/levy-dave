@@ -1,8 +1,7 @@
 import {useLocation, useNavigate} from "react-router-dom";
 import LanguageSelector from "./LanguageSelector.jsx";
-import {config} from "../data/config.js";
 
-export default function Header({languageIso}) {
+export default function Header({languageIso, logoSrc, languages}) {
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -21,7 +20,7 @@ export default function Header({languageIso}) {
             <div>
                 <a href={"https://linktr.ee/levydave"}>
                     <img
-                        src="./logo.png"
+                        src={logoSrc}
                         alt="Levy Dave"
                         className="h-10 w-auto object-contain"
                     />
@@ -29,7 +28,7 @@ export default function Header({languageIso}) {
             </div>
 
             <div className={"flex-grow flex justify-end"}>
-                <LanguageSelector languages={config.languages} onSelect={onLanguageChange} initialValue={languageIso}/>
+                <LanguageSelector languages={languages} onSelect={onLanguageChange} initialValue={languageIso}/>
             </div>
 
         </header>

@@ -21,13 +21,13 @@ export default function LanguageSelector({languages, onSelect, initialValue}) {
                 className="appearance-none bg-transparent border border-gray-700 text-gray-300 py-2 pl-4 pr-10 rounded-lg focus:outline-none focus:border-blue-500 cursor-pointer hover:border-gray-500 transition-colors">
 
                 {languages.map(language =>
-                    <option value={language.iso} className="bg-gray-900 text-white">{language.name}</option>
+                    <option key={language.iso} value={language.iso} className="bg-gray-900 text-white">{language.name}</option>
                 )}
             </select>
 
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"/>
                 </svg>
             </div>
         </div>

@@ -9,10 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@contentful/rich-text-html-renderer": "^17.1.6",
     "framer-motion": "^11.0.0",
+    "idb-keyval": "^6.2.2",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
-    "react-router-dom": "^6.22.0"
+    "react-router-dom": "^6.22.0",
+    "react-use": "^17.6.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.0",

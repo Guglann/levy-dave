@@ -13,7 +13,7 @@ export default function AlbumCard({ album, languageIso }) {
                 <div className="w-full aspect-square flex items-center justify-center p-6">
 
                     <img
-                        src={album.image}
+                        src={album.coverSrc}
                         alt={album.title}
                         className="max-h-full max-w-full object-contain transition duration-500 group-hover:scale-105"
                     />

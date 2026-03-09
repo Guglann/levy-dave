@@ -22,10 +22,12 @@ export const config = {
     ],
     languages: [
         {
+            id: 1,
             iso: 'pl',
             name: 'PL'
         },
         {
+            id: 2,
             iso: 'en',
             name: 'EN'
         }

@@ -1,22 +1,19 @@
 import {useParams} from "react-router-dom"
-import {config} from "../data/config.js"
 import {motion} from "framer-motion"
-import {TranslationResolver} from "../utils/TranslationResolver.js";
 import ActionButton from "../components/ActionButton.jsx";
 
-export default function Album() {
+export default function Album({pageData}) {
 
-    const {id, languageIso} = useParams()
+    const {languageIso, id} = useParams();
 
-    const translationResolver = new TranslationResolver(config);
-
-    const album = config.albums.find(a => a.id === id)
+    const album = pageData.albums.find(a => a.id === id);
 
     return (
+
         <div>
             <div className="mb-6">
                 <ActionButton
-                    text={translationResolver.resolve('goBack', languageIso)}
+                    text={pageData.translations.backButton[languageIso]}
                     linkUrl={`/${languageIso}`}
                     variantId={"ghost"}
                 />
@@ -26,31 +23,30 @@ export default function Album() {
                     <motion.img
                         initial={{opacity: 0, scale: 0.95}}
                         animate={{opacity: 1, scale: 1}}
-                        src={album.image}
+                        src={album.coverSrc}
                         className="w-full mb-10"
                     />
                 </div>
                 <div>
                     <h1 className="text-2xl mb-4">{album.title}</h1>
 
-                    <p className="text-lg text-white/70 leading-relaxed mb-6">
-                        {translationResolver.resolve(album.descriptionTranslationId, languageIso)}
-                    </p>
+                    <div className="text-lg text-white/70 leading-relaxed mb-6"
+                         dangerouslySetInnerHTML={{__html: album.description[languageIso]}}/>
 
                     {album.tracks.length && <>
 
-                        <h3 className="text-xl mb-2">{translationResolver.resolve('tracks', languageIso)}</h3>
+                        <h3 className="text-xl mb-2">Tracks</h3>
                         <ol className="list-decimal list-inside mb-12 text-lg">
                             {album.tracks.map(track =>
-                                <li className="text-white/70">{track.name}</li>
+                                <li key={track.name} className="text-white/70">{track.name}</li>
                             )}
                         </ol>
                     </>}
 
                     <div>
                         <ActionButton
-                            text={translationResolver.resolve('orderAction', languageIso)}
-                            linkUrl={config.purchaseFormUrl}
+                            text={pageData.translations.orderButton[languageIso]}
+                            linkUrl={pageData.config.purchaseFormUrl}
                             variantId={"primary"}
                             isDisabled={!album.isAvailableForPurchase}
                         />

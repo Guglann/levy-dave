@@ -15,11 +15,7 @@ export type Config = {
 	albums: Album[];
 };
 
-export type Translations = {
-	tracks: Record<string, string>;
-	backButton: Record<string, string>;
-	orderButton: Record<string, string>;
-};
+export type Translations = Record<string, Record<string, string>>;
 
 export type Language = {
 	iso: string;

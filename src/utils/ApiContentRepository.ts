@@ -84,20 +84,12 @@ class ApiContentRepository {
 
 		const firstItem = response.items[0];
 
-		return {
-			tracks: this.mapLanguageEntry(
-				firstItem.fields.tracks,
-				({ value }) => value,
-			),
-			backButton: this.mapLanguageEntry(
-				firstItem.fields.back,
-				({ value }) => value,
-			),
-			orderButton: this.mapLanguageEntry(
-				firstItem.fields.orderButton,
-				({ value }) => value,
-			),
-		};
+		const result = {};
+		for (const [name, field] of Object.entries(firstItem.fields)) {
+			result[name] = this.mapLanguageEntry(field, ({ value }) => value);
+		}
+
+		return result;
 	}
 
 	async getLanguages(): Promise<Language[]> {

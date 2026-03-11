@@ -20,7 +20,7 @@ export default function Album(props: Props) {
 		<div>
 			<div className="mb-6">
 				<ActionButton
-					text={props.pageData.translations.backButton[languageIso]}
+					text={props.pageData.translations.back[languageIso]}
 					linkUrl={`/${languageIso}`}
 					variant={"ghost"}
 					isDisabled={false}

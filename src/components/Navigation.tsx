@@ -26,12 +26,12 @@ export default function Navigation(props: Props) {
 					<img
 						src={props.pageData.config.logoSource}
 						alt="Levy Dave"
-						className="h-9 w-auto object-contain"
+						className="h-10 w-auto object-contain"
 					/>
 				</ReactLink>
 				<div className={"flex justify-end items-center gap-2"}>
 					<Dropdown
-						size={"small"}
+						size={"medium"}
 						color={"brand"}
 						variant={"ghost"}
 						options={props.pageData.languages.all.map((language) => ({
@@ -49,13 +49,13 @@ export default function Navigation(props: Props) {
 				<Link
 					text={"Moja twórczość"}
 					to={`/${props.languageIso}`}
-					size={"small"}
+					size={"medium"}
 					color={"white"}
 				/>
 				<Link
 					text={"O mnie"}
 					to={`/${props.languageIso}/about`}
-					size={"small"}
+					size={"medium"}
 					color={"white"}
 				/>
 			</div>

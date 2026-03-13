@@ -9,18 +9,18 @@ type Props = {
 
 export default function AlbumCardHorizontal(props: Props) {
 	return (
-		<div className={"grid grid-cols-1 sm:grid-cols-4"}>
-			<div>
+		<div className={"grid grid-cols-1 sm:grid-cols-6"}>
+			<div className={"col-span-2"}>
 				<img
 					src={props.album.coverSource}
 					alt={props.album.title}
 					className="max-h-full max-w-full object-contain rounded-lg"
 				/>
 			</div>
-			<div className={"col-span-3 py-6 sm:px-12"}>
-				<div className={"text-xl mb-4 font-semibold"}>{props.album.title}</div>
+			<div className={"col-span-4 py-6 sm:px-12"}>
+				<div className={"text-2xl mb-4 font-semibold"}>{props.album.title}</div>
 				<div
-					className="text-sm font-light mb-7"
+					className="text-lg font-light mb-7"
 					dangerouslySetInnerHTML={{
 						__html: props.album.description[props.languageIso],
 					}}

@@ -1,9 +1,9 @@
 export type Size = "large" | "small" | "medium";
 
 const sizeClasses: Record<Size, string[]> = {
-	small: ["px-2.75", "py-1.75", "leading-tight", "text-xs"],
-	medium: ["px-3", "py-2", "leading-tight", "text-sm"],
-	large: ["px-3.25", "py-2.25", "leading-tight", "text-medium"],
+	small: ["px-3", "py-2", "leading-tight", "text-xs"],
+	medium: ["px-5", "py-3", "leading-tight", "text-md"],
+	large: ["px-7", "py-4", "leading-tight", "text-lg"],
 };
 
 export type Color = "brand" | "white";

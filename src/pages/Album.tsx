@@ -32,22 +32,24 @@ export default function Album(props: Props) {
 					</div>
 					<div className="col-span-3">
 						<div
-							className="text-xl font-light"
+							className="text-xl mb-6"
 							dangerouslySetInnerHTML={{
 								__html: album.description[languageIso],
 							}}
 						/>
-						<div className="text-lg font-light">
-							{props.pageData.translations.tracks[languageIso]}
-						</div>
+						<div className={"mb-6"}>
+							<div className="text-xl mb-2">
+								{props.pageData.translations.tracks[languageIso]}
+							</div>
 
-						{album.tracks.length && (
-							<ol className="list-decimal list-inside">
-								{album.tracks.map((track) => (
-									<li key={track.name}>{track.name}</li>
-								))}
-							</ol>
-						)}
+							{album.tracks.length && (
+								<ol className="list-decimal list-inside text-xl">
+									{album.tracks.map((track) => (
+										<li key={track.name}>{track.name}</li>
+									))}
+								</ol>
+							)}
+						</div>
 						<div>
 							<Button
 								text={props.pageData.translations.orderButton[languageIso]}

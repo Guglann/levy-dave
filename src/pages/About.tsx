@@ -15,7 +15,7 @@ export default function About(_props: Props) {
 			<PageSectionHeader title={"O mnie"} />
 
 			<PageSectionNarrow>
-				<div>{description}</div>
+				<div className={"text-xl text-center"}>{description}</div>
 			</PageSectionNarrow>
 		</>
 	);

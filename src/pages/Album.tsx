@@ -3,6 +3,7 @@ import Button from "../components/Button";
 import PageSectionHeader from "../components/PageSectionHeader";
 import PageSectionNarrow from "../components/PageSectionNarrow";
 import type { PageData, RouteParams } from "../types";
+import { getStringTranslation } from "../utils/translationUtil";
 
 type Props = {
 	pageData: PageData;
@@ -22,6 +23,20 @@ export default function Album(props: Props) {
 			<PageSectionHeader title={album.title} />
 
 			<PageSectionNarrow>
+				<div className={"mb-6"}>
+					<Button
+						text={getStringTranslation(
+							props.pageData.translations,
+							"back",
+							languageIso,
+						)}
+						size={"medium"}
+						variant={"ghost"}
+						color={"brand"}
+						to={`/${languageIso}`}
+					/>
+				</div>
+
 				<div className="grid grid-cols-1 md:grid-cols-5 gap-12">
 					<div className="col-span-2">
 						<img
@@ -34,12 +49,16 @@ export default function Album(props: Props) {
 						<div
 							className="text-xl mb-6"
 							dangerouslySetInnerHTML={{
-								__html: album.description[languageIso],
+                                    __html: album.description[languageIso],
 							}}
 						/>
 						<div className={"mb-6"}>
 							<div className="text-xl mb-2">
-								{props.pageData.translations.tracks[languageIso]}
+								{getStringTranslation(
+									props.pageData.translations,
+									"tracks",
+									languageIso,
+								)}
 							</div>
 
 							{album.tracks.length && (
@@ -52,7 +71,11 @@ export default function Album(props: Props) {
 						</div>
 						<div>
 							<Button
-								text={props.pageData.translations.orderButton[languageIso]}
+								text={getStringTranslation(
+									props.pageData.translations,
+									"orderButton",
+									languageIso,
+								)}
 								size={"medium"}
 								variant={"primary"}
 								color={"brand"}

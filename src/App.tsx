@@ -5,11 +5,12 @@ import PageLayout from "./components/PageLayout";
 import About from "./pages/About";
 import Album from "./pages/Album";
 import Home from "./pages/Home";
-import { contentRepository } from "./utils/ApiContentRepository.js";
+import {pageDataRepository} from "./services/PageDataRepository";
+import {getAssetUrl} from "./utils/contentfulValueUtil";
 
 export default function App() {
 	const pageDataRequest = useAsync(async () => {
-		return contentRepository.getPageData();
+		return pageDataRepository.getPageData();
 	}, []);
 
 	if (pageDataRequest.loading) {
@@ -28,7 +29,7 @@ export default function App() {
 				<Route
 					path="/"
 					element={
-						<Navigate to={`/${pageData.languages.default.iso}`} replace />
+						<Navigate to={`/${pageData.defaultLocale.code}`} replace />
 					}
 				/>
 
@@ -36,15 +37,15 @@ export default function App() {
 					path="/:languageIso"
 					element={
 						<LanguageGuard
-							languages={pageData.languages.all}
-							defaultLanguage={pageData.languages.default}
+							locales={pageData.locales}
+							defaultLocale={pageData.defaultLocale}
 						/>
 					}
 				>
 					<Route element={<PageLayout pageData={pageData} />}>
-						<Route path="" element={<Home pageData={pageData} />} />
-						<Route path="album/:id" element={<Album pageData={pageData} />} />
-						<Route path="about" element={<About pageData={pageData} />} />
+						<Route path="" element={<div>Abba</div>} />
+						<Route path="album/:id" element={<div>Abba</div>} />
+						<Route path="about" element={<div>Abba</div>} />
 					</Route>
 				</Route>
 			</Routes>

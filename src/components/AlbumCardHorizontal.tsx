@@ -1,4 +1,5 @@
 import type { Album, Translations } from "../types";
+import { getStringTranslation } from "../utils/translationUtil";
 import Button from "./Button";
 
 type Props = {
@@ -27,7 +28,11 @@ export default function AlbumCardHorizontal(props: Props) {
 				/>
 
 				<Button
-					text={props.translations.seeAlbum[props.languageIso]}
+					text={getStringTranslation(
+						props.translations,
+						"seeAlbum",
+						props.languageIso,
+					)}
 					size={"medium"}
 					variant={"primary"}
 					extraClasses={["shadow-md"]}

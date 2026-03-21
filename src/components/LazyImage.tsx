@@ -10,7 +10,7 @@ type Props = {
 export default function LazyImage({ alt, url, classNames = [] }: Props) {
 	const sourceRequest = useAsync(async () => {
 		return assetCache.getAssetSource(url);
-	}, []);
+	}, [url]);
 
 	if (sourceRequest.loading) {
 		return;

@@ -6,6 +6,7 @@ type Props = {
 		url: string;
 		alt: string;
 	}[];
+	className?: string;
 };
 
 export default function PhotoGallery(props: Props) {

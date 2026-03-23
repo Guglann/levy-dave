@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { Spotify } from "react-spotify-embed";
 import Button from "../components/Button";
 import PageSectionHeader from "../components/PageSectionHeader";
 import PageSectionNarrow from "../components/PageSectionNarrow";
@@ -47,7 +48,16 @@ export default function Album(props: Props) {
 
 				<div className="grid grid-cols-1 md:grid-cols-5 gap-y-12 md:gap-x-12 md:gap-y-12">
 					<div className="col-span-2">
-						<PhotoGallery images={getAlbumImages(album)} />
+						<div className="mb-10">
+							<PhotoGallery images={getAlbumImages(album)} />
+						</div>
+
+						<div>
+							<Spotify
+								className="w-full"
+								link={"https://open.spotify.com/album/2QipYsMyZ9mhip8vlpTZPP"}
+							/>
+						</div>
 					</div>
 					<div className="col-span-3">
 						<div className={"text-2xl mb-6 font-semibold"}>
@@ -73,7 +83,7 @@ export default function Album(props: Props) {
 								))}
 							</ol>
 						</div>
-						<div className={"flex gap-3"}>
+						<div className="mb-6">
 							<Button
 								text={getTranslationValue(
 									props.pageData.pageTranslations.fields.orderButton,
@@ -87,6 +97,8 @@ export default function Album(props: Props) {
 									languageIso,
 								)}
 							/>
+						</div>
+						<div>
 							<Button
 								text={getTranslationValue(
 									props.pageData.pageTranslations.fields.pagelink,

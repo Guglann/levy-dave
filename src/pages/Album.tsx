@@ -45,7 +45,7 @@ export default function Album(props: Props) {
 					/>
 				</div>
 
-				<div className="grid grid-cols-1 md:grid-cols-5 gap-12">
+				<div className="grid grid-cols-1 md:grid-cols-5 gap-y-12 md:gap-x-12 md:gap-y-12">
 					<div className="col-span-2">
 						<PhotoGallery images={getAlbumImages(album)} />
 					</div>

@@ -66,6 +66,15 @@ export default function Navigation(props: Props) {
 					size={"medium"}
 					color={"white"}
 				/>
+				<Link
+					text={getTranslationValue(
+						props.pageData.pageTranslations.fields.kontaktLabel,
+						props.languageIso,
+					)}
+					to={`/${props.languageIso}/contact`}
+					size={"medium"}
+					color={"white"}
+				/>
 			</div>
 		</nav>
 	);

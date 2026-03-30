@@ -45,7 +45,9 @@ export interface PageTranslationsSkeleton {
 		aboutLabel: EntryFieldTypes.Text;
 		shop: EntryFieldTypes.Text;
 		oWydawnictwie: EntryFieldTypes.RichText;
+		kontakt: EntryFieldTypes.RichText;
 		pagelink: EntryFieldTypes.Text;
+		kontaktLabel: EntryFieldTypes.Text;
 	};
 }
 

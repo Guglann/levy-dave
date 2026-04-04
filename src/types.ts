@@ -5,6 +5,7 @@ import type {
 	Locale,
 	LocaleCollection,
 } from "contentful";
+import type { Product } from "./models/Product";
 
 export type RouteParams = {
 	languageIso: string;
@@ -52,6 +53,20 @@ export interface PageTranslationsSkeleton {
 	};
 }
 
+export interface AlbumProductData {
+	contentTypeId: "albumProductSubtype";
+	fields: {
+		tracks: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+	};
+}
+
+export type AlbumProductSubtypes = EntryCollection<
+	AlbumProductData,
+	"WITH_ALL_LOCALES"
+>;
+
+export type AlbumProductSubtype = AlbumProductSubtypes["items"][number];
+
 export interface ProductSkeleton {
 	contentTypeId: "product";
 	fields: {
@@ -59,22 +74,20 @@ export interface ProductSkeleton {
 		name: EntryFieldTypes.Text;
 		shortDescription: EntryFieldTypes.Text;
 		stockQuantity: EntryFieldTypes.Number;
+		subtype: EntryFieldTypes.EntryLink<AlbumProductData>;
 	};
 }
+
+export type ApiProducts = EntryCollection<ProductSkeleton, "WITH_ALL_LOCALES">;
+
+export type ApiProduct = ApiProducts["items"][number];
 
 export type LocalizedAlbums = EntryCollection<
 	AlbumSkeleton,
 	"WITH_ALL_LOCALES"
 >;
 
-export type LocalizedProducts = EntryCollection<
-	ProductSkeleton,
-	"WITH_ALL_LOCALES"
->;
-
 export type LocalizedAlbum = LocalizedAlbums["items"][number];
-
-export type LocalizedProduct = LocalizedProducts["items"][number];
 
 export type LocalizedPageConfig = Entry<PageConfigSkeleton, "WITH_ALL_LOCALES">;
 
@@ -92,7 +105,7 @@ export interface ContentfulClient {
 
 	getLocales(): Promise<LocaleCollection>;
 
-	getProducts(): Promise<LocalizedProducts>;
+	getProducts(): Promise<EntryCollection<ProductSkeleton, "WITH_ALL_LOCALES">>;
 }
 
 export type PageData = {
@@ -101,5 +114,5 @@ export type PageData = {
 	pageTranslations: LocalizedPageTranslations;
 	locales: LocaleCollection;
 	defaultLocale: Locale;
-	products: LocalizedProducts;
+	products: Product[];
 };

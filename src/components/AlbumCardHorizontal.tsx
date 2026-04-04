@@ -19,7 +19,7 @@ export default function AlbumCardHorizontal(props: Props) {
 			<div className={"col-span-2"}>
 				<LazyImage
 					url={getAssetUrl(props.album.fields.cover)}
-					alt={"Album cover"}
+					alt={"AlbumProductData cover"}
 					classNames={[
 						"max-h-full",
 						"max-w-full",

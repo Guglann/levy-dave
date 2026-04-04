@@ -1,15 +1,16 @@
-import type { LocalizedPageTranslations, LocalizedProduct } from "../types";
+import type { Product } from "../models/Product";
+import type { LocalizedPageTranslations } from "../types";
 import { getTranslationValue } from "../utils/contentfulValueUtil";
 import Button from "./Button";
 import LazyImage from "./LazyImage";
 
 type Props = {
-	product: LocalizedProduct;
+	product: Product;
 	translations: LocalizedPageTranslations;
 	languageIso: string;
 };
 
-export default function ProductCardHorizontal(props: Props) {
+export default function ProductHorizontal(props: Props) {
 	return (
 		<div className={"grid grid-cols-1 sm:grid-cols-6"}>
 			<div className={"col-span-2"}>
@@ -28,14 +29,11 @@ export default function ProductCardHorizontal(props: Props) {
 			</div>
 			<div className={"col-span-4 py-6 sm:px-12"}>
 				<div className={"text-2xl mb-4 font-semibold"}>
-					{getTranslationValue(props.product.fields.name, props.languageIso)}
+					{props.product.getName(props.languageIso)}
 				</div>
 
 				<div className="text-lg font-light mb-7">
-					{getTranslationValue(
-						props.product.fields.shortDescription,
-						props.languageIso,
-					)}
+					{props.product.getShortDescription(props.languageIso)}
 				</div>
 
 				<Button
@@ -47,7 +45,7 @@ export default function ProductCardHorizontal(props: Props) {
 					variant={"primary"}
 					extraClasses={["shadow-md"]}
 					color={"brand"}
-					to={`/${props.languageIso}/product/${getTranslationValue(props.product.fields.id, "en")}`}
+					to={`/${props.languageIso}/product/${props.product.getId()}`}
 				/>
 			</div>
 		</div>

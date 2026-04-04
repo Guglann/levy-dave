@@ -1,10 +1,10 @@
-import type { LocaleCollection } from "contentful";
+import type { EntryCollection, LocaleCollection } from "contentful";
 import type {
 	ContentfulClient,
 	LocalizedAlbums,
 	LocalizedPageConfig,
 	LocalizedPageTranslations,
-	LocalizedProducts,
+	ProductSkeleton,
 } from "../types";
 import { contentfulClient2 } from "./ContentfulClient";
 import { IdbStorage } from "./IdbStorage";
@@ -36,7 +36,9 @@ export class CachedContentfulClient implements ContentfulClient {
 		const cacheKey = `getProducts`;
 
 		const cachedResult =
-			await this.storage.retrieve<LocalizedProducts>(cacheKey);
+			await this.storage.retrieve<
+				EntryCollection<ProductSkeleton, "WITH_ALL_LOCALES">
+			>(cacheKey);
 
 		if (cachedResult) {
 			return cachedResult;

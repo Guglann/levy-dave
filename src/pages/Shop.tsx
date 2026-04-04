@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import AlbumCardHorizontal from "../components/AlbumCardHorizontal";
 import PageSectionHeader from "../components/PageSectionHeader";
 import PageSectionNarrow from "../components/PageSectionNarrow";
-import ProductCardHorizontal from "../components/ProductCardHorizontal";
+import ProductHorizontal from "../components/ProductHorizontal";
 import type { PageData, RouteParams } from "../types";
 import { getTranslationValue } from "../utils/contentfulValueUtil";
 
@@ -44,9 +44,9 @@ export default function Shop(props: Props) {
 
 				<h1 className={"text-2xl text-bold mb-6"}>Produkty</h1>
 
-				{props.pageData.products.items.map((product) => (
-					<ProductCardHorizontal
-						key={product?.sys.id}
+				{props.pageData.products.map((product) => (
+					<ProductHorizontal
+						key={product.getId()}
 						product={product}
 						languageIso={languageIso}
 						translations={props.pageData.pageTranslations}

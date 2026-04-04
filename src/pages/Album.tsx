@@ -68,7 +68,7 @@ export default function Album(props: Props) {
 							</div>
 
 							<ol className="list-decimal list-inside text-lg font-light">
-								{album.fields.tracks?.en?.map((track) => (
+								{album.fields.tracks?.pl?.map((track) => (
 									<li key={track}>{track}</li>
 								))}
 							</ol>
@@ -95,7 +95,7 @@ export default function Album(props: Props) {
 								size={"medium"}
 								variant={"ghost"}
 								color={"brand"}
-								to={album.fields.pagelink?.en}
+								to={album.fields.pagelink?.pl}
 							/>
 						</div>
 					</div>

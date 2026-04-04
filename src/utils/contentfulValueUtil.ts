@@ -35,7 +35,7 @@ export const getAssetUrl = (localizedAsset: LocalizedMaybeAsset): string => {
 	try {
 		const asset = asLocalizedAsset(localizedAsset, "en");
 
-		const assetFile = asset.fields.file?.en;
+		const assetFile = asset.fields.file?.pl;
 
 		if (!assetFile) {
 			return "";
@@ -72,7 +72,7 @@ export const getAlbumImages = (album: LocalizedAlbum) => {
 
 	const coverAsset = asLocalizedAsset(album.fields.cover, "en");
 
-	const coverFile = coverAsset.fields.file?.en;
+	const coverFile = coverAsset.fields.file?.pl;
 
 	const coverUrl = coverFile?.url;
 
@@ -85,7 +85,7 @@ export const getAlbumImages = (album: LocalizedAlbum) => {
 		alt: coverFile?.fileName ?? "",
 	});
 
-	const imagesField = album.fields.images?.en;
+	const imagesField = album.fields.images?.pl;
 
 	if (!imagesField) {
 		return images;
@@ -96,7 +96,7 @@ export const getAlbumImages = (album: LocalizedAlbum) => {
 			continue;
 		}
 
-		const imageFile = image.fields.file?.en;
+		const imageFile = image.fields.file?.pl;
 
 		if (!imageFile) {
 			continue;

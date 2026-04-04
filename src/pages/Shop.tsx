@@ -23,7 +23,7 @@ export default function Shop(props: Props) {
 
 			<PageSectionNarrow>
 				<div className={"grid grid-cols-1 gap-3 sm:gap-10"}>
-					{props.pageData.pageConfig.fields?.albums?.en?.map(
+					{props.pageData.pageConfig.fields?.albums?.pl?.map(
 						(album) =>
 							"fields" in album && (
 								<AlbumCardHorizontal

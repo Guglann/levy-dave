@@ -9,6 +9,7 @@ import type {
 	AlbumSkeleton,
 	PageConfigSkeleton,
 	PageTranslationsSkeleton,
+	ProductSkeleton,
 } from "../types";
 
 export class ContentfulClient implements ContentfulClient {
@@ -31,6 +32,15 @@ export class ContentfulClient implements ContentfulClient {
 	> {
 		return await this.client.getEntries<AlbumSkeleton>({
 			content_type: "album",
+			include: 2,
+		});
+	}
+
+	async getProducts(): Promise<
+		EntryCollection<ProductSkeleton, "WITH_ALL_LOCALES">
+	> {
+		return await this.client.getEntries<ProductSkeleton>({
+			content_type: "product",
 			include: 2,
 		});
 	}

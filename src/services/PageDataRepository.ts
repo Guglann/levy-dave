@@ -9,14 +9,20 @@ export class PageDataRepository {
 		const pageConfig = await this.client.getPageConfig();
 		const pageTranslations = await this.client.getPageTranslations();
 		const locales = await this.client.getLocales();
+		const products = await this.client.getProducts();
 
 		const defaultLocale = locales.items.find((locale) => locale.default);
+
+		if (!defaultLocale) {
+			throw new Error("No default locale found.");
+		}
 
 		return {
 			albums,
 			pageConfig,
 			pageTranslations,
 			locales,
+			products,
 			defaultLocale: defaultLocale,
 		};
 	}

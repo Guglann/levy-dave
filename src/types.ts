@@ -48,6 +48,17 @@ export interface PageTranslationsSkeleton {
 		kontakt: EntryFieldTypes.RichText;
 		pagelink: EntryFieldTypes.Text;
 		kontaktLabel: EntryFieldTypes.Text;
+		seeProduct: EntryFieldTypes.Text;
+	};
+}
+
+export interface ProductSkeleton {
+	contentTypeId: "product";
+	fields: {
+		id: EntryFieldTypes.Text;
+		name: EntryFieldTypes.Text;
+		shortDescription: EntryFieldTypes.Text;
+		stockQuantity: EntryFieldTypes.Number;
 	};
 }
 
@@ -56,7 +67,14 @@ export type LocalizedAlbums = EntryCollection<
 	"WITH_ALL_LOCALES"
 >;
 
+export type LocalizedProducts = EntryCollection<
+	ProductSkeleton,
+	"WITH_ALL_LOCALES"
+>;
+
 export type LocalizedAlbum = LocalizedAlbums["items"][number];
+
+export type LocalizedProduct = LocalizedProducts["items"][number];
 
 export type LocalizedPageConfig = Entry<PageConfigSkeleton, "WITH_ALL_LOCALES">;
 
@@ -73,6 +91,8 @@ export interface ContentfulClient {
 	getPageTranslations(): Promise<LocalizedPageTranslations>;
 
 	getLocales(): Promise<LocaleCollection>;
+
+	getProducts(): Promise<LocalizedProducts>;
 }
 
 export type PageData = {
@@ -81,4 +101,5 @@ export type PageData = {
 	pageTranslations: LocalizedPageTranslations;
 	locales: LocaleCollection;
 	defaultLocale: Locale;
+	products: LocalizedProducts;
 };

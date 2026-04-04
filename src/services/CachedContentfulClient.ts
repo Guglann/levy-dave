@@ -4,6 +4,7 @@ import type {
 	LocalizedAlbums,
 	LocalizedPageConfig,
 	LocalizedPageTranslations,
+	LocalizedProducts,
 } from "../types";
 import { contentfulClient2 } from "./ContentfulClient";
 import { IdbStorage } from "./IdbStorage";
@@ -25,6 +26,23 @@ export class CachedContentfulClient implements ContentfulClient {
 		}
 
 		const result = await this.baseClient.getAlbums();
+
+		await this.storage.store(cacheKey, result, 3600);
+
+		return result;
+	}
+
+	async getProducts() {
+		const cacheKey = `getProducts`;
+
+		const cachedResult =
+			await this.storage.retrieve<LocalizedProducts>(cacheKey);
+
+		if (cachedResult) {
+			return cachedResult;
+		}
+
+		const result = await this.baseClient.getProducts();
 
 		await this.storage.store(cacheKey, result, 3600);
 

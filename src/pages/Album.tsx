@@ -18,7 +18,7 @@ export default function Album(props: Props) {
 	const { id, languageIso } = useParams() as RouteParams;
 
 	const album = props.pageData.albums.items.find(
-		(a) => getTranslationValue(a.fields.id, "en") === id,
+		(a) => getTranslationValue(a.fields.id, "pl") === id,
 	);
 
 	if (!album) {
@@ -28,7 +28,7 @@ export default function Album(props: Props) {
 	return (
 		<>
 			<PageSectionHeader
-				title={getTranslationValue(album.fields.artistname, "en")}
+				title={getTranslationValue(album.fields.artistname, "pl")}
 			/>
 
 			<PageSectionNarrow>
@@ -51,7 +51,7 @@ export default function Album(props: Props) {
 					</div>
 					<div className="col-span-3">
 						<div className={"text-2xl mb-6 font-semibold"}>
-							{getTranslationValue(album.fields.title, "en")}
+							{getTranslationValue(album.fields.title, "pl")}
 						</div>
 						<div
 							className="text-lg mb-4"

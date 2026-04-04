@@ -30,7 +30,7 @@ export default function AlbumCardHorizontal(props: Props) {
 			</div>
 			<div className={"col-span-4 py-6 sm:px-12"}>
 				<div className={"text-2xl mb-4 font-semibold"}>
-					{getTranslationValue(props.album.fields.title, "en")}
+					{getTranslationValue(props.album.fields.title, "pl")}
 				</div>
 				<div
 					className="text-lg font-light mb-7"
@@ -48,7 +48,7 @@ export default function AlbumCardHorizontal(props: Props) {
 					variant={"primary"}
 					extraClasses={["shadow-md"]}
 					color={"brand"}
-					to={`/${props.languageIso}/album/${getTranslationValue(props.album.fields.id, "en")}`}
+					to={`/${props.languageIso}/album/${getTranslationValue(props.album.fields.id, "pl")}`}
 				/>
 			</div>
 		</div>

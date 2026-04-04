@@ -33,7 +33,7 @@ export const asLocalizedAsset = (
 
 export const getAssetUrl = (localizedAsset: LocalizedMaybeAsset): string => {
 	try {
-		const asset = asLocalizedAsset(localizedAsset, "en");
+		const asset = asLocalizedAsset(localizedAsset, "pl");
 
 		const assetFile = asset.fields.file?.pl;
 
@@ -70,7 +70,7 @@ export const getHtmlString = (
 export const getAlbumImages = (album: LocalizedAlbum) => {
 	const images: { url: string; alt: string }[] = [];
 
-	const coverAsset = asLocalizedAsset(album.fields.cover, "en");
+	const coverAsset = asLocalizedAsset(album.fields.cover, "pl");
 
 	const coverFile = coverAsset.fields.file?.pl;
 

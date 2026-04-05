@@ -15,10 +15,8 @@ export default function ProductHorizontal(props: Props) {
 		<div className={"grid grid-cols-1 sm:grid-cols-6"}>
 			<div className={"col-span-2"}>
 				<LazyImage
-					url={
-						"https://thumbs.dreamstime.com/b/closeup-square-portrait-calico-cat-9900445.jpg"
-					}
-					alt={"Product cover"}
+					url={props.product.getCover()?.url ?? ""}
+					alt={props.product.getCover()?.fileName ?? ""}
 					classNames={[
 						"max-h-full",
 						"max-w-full",

@@ -1,6 +1,6 @@
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import type { Document } from "@contentful/rich-text-types";
-import type { Asset, UnresolvedLink } from "contentful";
+import type { Asset, AssetFile, UnresolvedLink } from "contentful";
 import type { LocalizedAlbum } from "../types";
 
 type LocalizedMaybeAsset = Record<
@@ -116,3 +116,22 @@ export const getAlbumImages = (album: LocalizedAlbum) => {
 
 	return images;
 };
+
+export function resolveAsset(
+	maybeAsset:
+		| UnresolvedLink<"Asset">
+		| Asset<"WITH_ALL_LOCALES", string>
+		| undefined,
+): AssetFile | null {
+	if (!maybeAsset || !("fields" in maybeAsset)) {
+		return null;
+	}
+
+	const fileData = maybeAsset.fields.file?.pl;
+
+	if (!fileData) {
+		return null;
+	}
+
+	return fileData;
+}

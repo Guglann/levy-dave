@@ -73,8 +73,12 @@ export interface ProductSkeleton {
 		id: EntryFieldTypes.Text;
 		name: EntryFieldTypes.Text;
 		shortDescription: EntryFieldTypes.Text;
+		longDescription: EntryFieldTypes.RichText;
 		stockQuantity: EntryFieldTypes.Number;
 		subtype: EntryFieldTypes.EntryLink<AlbumProductData>;
+		cover: EntryFieldTypes.AssetLink;
+		brand: EntryFieldTypes.Text;
+		images: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
 	};
 }
 

@@ -96,4 +96,12 @@ export class Product {
 
 		return value;
 	}
+
+	getSeeMoreLink() {
+		return this.base.fields.seeMoreLink?.pl;
+	}
+
+	getOrderLink() {
+		return this.base.fields.orderLink?.pl;
+	}
 }

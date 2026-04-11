@@ -63,10 +63,6 @@ export default function ProductPage(props: Props) {
 							/>
 						)}
 
-						<div className={"font-light"}>
-							Zostało: {product.getStockQuantity()}
-						</div>
-
 						{subtype instanceof AlbumProductData && (
 							<>
 								<div className="text-lg">
@@ -84,29 +80,31 @@ export default function ProductPage(props: Props) {
 						)}
 
 						<div className={"flex gap-3"}>
-							<Button
-								text={getTranslationValue(
-									props.pageData.pageTranslations.fields.orderButton,
-									languageIso,
-								)}
-								size={"medium"}
-								variant={"primary"}
-								color={"brand"}
-								to={getTranslationValue(
-									props.pageData.pageConfig.fields.purchaseFormUrl,
-									languageIso,
-								)}
-							/>
-							<Button
-								text={getTranslationValue(
-									props.pageData.pageTranslations.fields.pagelink,
-									languageIso,
-								)}
-								size={"medium"}
-								variant={"ghost"}
-								color={"brand"}
-								to={"#"}
-							/>
+							{product.getOrderLink() && (
+								<Button
+									text={getTranslationValue(
+										props.pageData.pageTranslations.fields.orderButton,
+										languageIso,
+									)}
+									size={"medium"}
+									variant={"primary"}
+									color={"brand"}
+									to={product.getOrderLink()}
+								/>
+							)}
+
+							{product.getSeeMoreLink() && (
+								<Button
+									text={getTranslationValue(
+										props.pageData.pageTranslations.fields.pagelink,
+										languageIso,
+									)}
+									size={"medium"}
+									variant={"ghost"}
+									color={"brand"}
+									to={product.getSeeMoreLink()}
+								/>
+							)}
 						</div>
 					</div>
 				</div>

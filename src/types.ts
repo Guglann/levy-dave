@@ -79,6 +79,8 @@ export interface ProductSkeleton {
 		cover: EntryFieldTypes.AssetLink;
 		brand: EntryFieldTypes.Text;
 		images: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+		seeMoreLink: EntryFieldTypes.Text;
+		orderLink: EntryFieldTypes.Text;
 	};
 }
 
